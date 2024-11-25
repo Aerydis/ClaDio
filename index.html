@@ -1,10 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>ClaDio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Style the tab links */
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+        }
+
+        .tabs button {
+            background-color: #333;
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            cursor: pointer;
+            width: 33.33%;
+            text-align: center;
+        }
+
+        .tabs button:hover {
+            background-color: #575757;
+        }
+
+        /* Content Section Style */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border-top: 2px solid #333;
+        }
+
+        .active-tab {
+            background-color: #575757;
+            color: white;
+        }
+
+        /* When active, show the corresponding tab */
+        .show {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <h1>This is Cladio Web.</h1>
-    <p>Hello!</p>
+
+    <h1>Welcome to My Product Project</h1>
+
+    <!-- Navigation for Tabs -->
+    <div class="tabs">
+        <button class="tab-link" onclick="showTab('home')">Home</button>
+        <button class="tab-link" onclick="showTab('blog')">Blog</button>
+        <button class="tab-link" onclick="showTab('shop')">Shop</button>
+    </div>
+
+    <!-- Content Sections -->
+    <div id="home" class="tab-content show">
+        <h2>Product Description</h2>
+        <p>Welcome to my product. Here, you’ll find detailed information about my product.</p>
+    </div>
+
+    <div id="blog" class="tab-content">
+        <h2>Progress Blog</h2>
+        <p>Here’s where I’ll blog about the progress of my project and any challenges I face.</p>
+    </div>
+
+    <div id="shop" class="tab-content">
+        <h2>Mock Shop</h2>
+        <p>This is a mock shop where you can browse my products and pretend to buy them!</p>
+    </div>
+
+    <script>
+        // Function to show the clicked tab and hide others
+        function showTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                tab.classList.remove('show');
+            });
+
+            // Remove 'active' style from all tab links
+            const tabLinks = document.querySelectorAll('.tab-link');
+            tabLinks.forEach(link => {
+                link.classList.remove('active-tab');
+            });
+
+            // Show the clicked tab and highlight the link
+            document.getElementById(tabName).classList.add('show');
+            const activeLink = Array.from(tabLinks).find(link => link.textContent.toLowerCase() === tabName);
+            activeLink.classList.add('active-tab');
+        }
+    </script>
 </body>
 </html>
